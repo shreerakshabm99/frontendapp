@@ -5,7 +5,11 @@ import axios from "axios";
 import MessageBox from "./MessageBox";
 import "../styles/style.css";
 
+<<<<<<< HEAD
 export default function Login() {
+=======
+export default function login() {
+>>>>>>> 0b298e9fa9322e8949dd20c926052f7cfae5d445
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
 
