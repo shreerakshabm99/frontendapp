@@ -10,7 +10,7 @@ export default function Login() {
   const [showLogin, setShowLogin] = useState(false);
 
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
     remember: false,
   });
@@ -19,6 +19,7 @@ export default function Login() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+  
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -29,9 +30,11 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/login", formData);
+      console.log(formData)
+      const response = await axios.post("http://localhost:9091/api/users/login", formData);
 
       if (response.status === 200) {
+        console.log("iam here")
         setMsg({ type: "success", text: "Login Successful!" });
         setTimeout(() => {
           navigate("/home");
@@ -78,14 +81,14 @@ export default function Login() {
 
             <div className="input-field">
               <input
-                type="email"
-                name="email"
+                type="text"
+                name="username"
                 placeholder=" "
-                value={formData.email}
+                // value={formData.email}
                 onChange={handleChange}
                 required
               />
-              <label>Enter your email</label>
+              <label>Enter your username</label>
             </div>
 
             <div className="input-field">
@@ -93,7 +96,7 @@ export default function Login() {
                 type="password"
                 name="password"
                 placeholder=" "
-                value={formData.password}
+                // value={formData.password}
                 onChange={handleChange}
                 required
               />
