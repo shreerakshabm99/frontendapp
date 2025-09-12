@@ -24,7 +24,7 @@ body, html {
 
 .logout-btn {
   position: absolute;
-  top: 20px;
+  top: 7px;
   right: 20px;
   padding: 10px 20px;
   background-color: #f44336;
@@ -32,6 +32,8 @@ body, html {
   border: none;
   border-radius: 22px;
   cursor: pointer;
+  width:100px;
+  margin-left: 1000px;
 }
 
 .logout-btn:hover {

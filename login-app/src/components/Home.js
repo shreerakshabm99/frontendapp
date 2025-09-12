@@ -16,7 +16,7 @@ function Home() {
   }, []);
 
   const handleLogout = () => {
-    navigate('/login');
+    navigate('/Login');
   };
 
   return (
