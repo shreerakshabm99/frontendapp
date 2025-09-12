@@ -5,7 +5,7 @@ import axios from "axios";
 import MessageBox from "./MessageBox";
 import "../styles/style.css";
 
-export default function LoginPage() {
+export default function login() {
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
 
