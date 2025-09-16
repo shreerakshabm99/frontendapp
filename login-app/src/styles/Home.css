@@ -24,7 +24,7 @@ body, html {
 
 .logout-btn {
   position: absolute;
-  top: 7px;
+  top: 5px;
   right: 20px;
   padding: 10px 20px;
   background-color: #f44336;
