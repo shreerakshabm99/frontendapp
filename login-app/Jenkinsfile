@@ -24,6 +24,14 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                dir('login-app') {
+                    bat 'npm start'
+                }
+            }
+        }
+
         stage('Archive Build') {
             steps {
                 dir('login-app') {
