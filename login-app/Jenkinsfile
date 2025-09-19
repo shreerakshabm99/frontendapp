@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Running') {
             steps {
                 dir('login-app') {
                     bat 'npm run build'
