@@ -1,8 +1,5 @@
-
 pipeline {
     agent any
-
-
 
     stages {
         stage('Checkout') {
@@ -13,19 +10,25 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('login-app') {
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Build') {
             steps {
-                bat 'npm run build'
+                dir('login-app') {
+                    bat 'npm run build'
+                }
             }
         }
 
         stage('Archive Build') {
             steps {
-                archiveArtifacts artifacts: 'build/**', fingerprint: true
+                dir('login-app') {
+                    archiveArtifacts artifacts: 'build/**', fingerprint: true
+                }
             }
         }
     }
