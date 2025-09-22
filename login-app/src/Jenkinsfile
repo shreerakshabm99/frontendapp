@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/shreerakshabm99/frontendapp.git', branch: 'dev'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                dir('login-app') {
+                    bat 'npm install'
+                }
+            }
+        }
+
+        stage('Running') {
+            steps {
+                dir('login-app') {
+                    bat 'npm run build'
+                }
+            }
+        }
+
+        // stage('Build') {
+        //     steps {
+        //         dir('login-app') {
+        //             bat 'npm start'
+        //         }
+        //     }
+        // }
+
+        stage('Archive Build') {
+            steps {
+                dir('login-app') {
+                    archiveArtifacts artifacts: 'build/**', fingerprint: true
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('MySonar') {
+                    bat 'sonar-scanner'
+                }
+            }
+        }
+    }
+}
