@@ -24,7 +24,14 @@ pipeline {
             }
         }
 
-      
+       stage('Testing') {
+    steps {
+        dir('login-app') {
+            bat 'npm install sonar-scanner --save-dev'
+'
+        }
+    }
+}
 
         stage('Test') {
     steps {
@@ -39,7 +46,7 @@ pipeline {
             steps {
                 dir('login-app') {
                     withSonarQubeEnv('SonarQube Server') {
-                        bat 'sonar-scanner'
+                        bat 'npm run sonar'
                     }
                 }
             }
