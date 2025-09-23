@@ -40,7 +40,7 @@ pipeline {
   stage('Test') {
   steps {
     dir('login-app') {
-      bat 'npm test '
+      bat 'npm test'
     }
   }
 }
