@@ -16,8 +16,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --coverage --watchAll=false",
+    "eject": "react-scripts eject",
+    "sonar": "sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_04448d6504d14beca751ad5583bfee8b014fa73b"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +42,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "sonar-scanner": "^3.1.0"
   }
 }
