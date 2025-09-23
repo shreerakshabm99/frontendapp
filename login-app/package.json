@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "sonar": "sonar-scanner -Dsonar.host.url=http://localhost:9000"
+    "sonar": "sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_2ccebb54a36b4e0edfef930f1c51441ac4fdd790"
   },
   "eslintConfig": {
     "extends": [
