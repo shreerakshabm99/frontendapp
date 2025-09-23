@@ -27,14 +27,6 @@ pipeline {
             }
         }
 
-        stage('List test files') {
-  steps {
-    dir('login-app') {
-      bat 'dir /s *.test.js'
-      bat 'dir /s *.test.jsx'
-    }
-  }
-}
 
 
   stage('Test') {
