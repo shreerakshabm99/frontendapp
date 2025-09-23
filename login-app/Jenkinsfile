@@ -11,7 +11,10 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('login-app') {
+                    // Install project dependencies including sonar-scanner
                     bat 'npm install'
+                    // Also install sonar-scanner locally (if not already in package.json)
+                    bat 'npm install sonar-scanner --save-dev'
                 }
             }
         }
@@ -24,29 +27,20 @@ pipeline {
             }
         }
 
-       stage('Testing') {
-    steps {
-        dir('login-app') {
-            bat 'npm install sonar-scanner --save-dev'
-'
-        }
-    }
-}
-
         stage('Test') {
-    steps {
-        dir('login-app') {
-            bat 'npm test -- --coverage --watchAll=false --passWithNoTests'
+            steps {
+                dir('login-app') {
+                    bat 'npm test -- --coverage --watchAll=false --passWithNoTests'
+                }
+            }
         }
-    }
-}
-
 
         stage('SonarQube Analysis') {
             steps {
                 dir('login-app') {
                     withSonarQubeEnv('SonarQube Server') {
-                        bat 'npm run sonar'
+                        // Use local sonar-scanner from node_modules
+                        bat '.\\node_modules\\.bin\\sonar-scanner.cmd'
                     }
                 }
             }
