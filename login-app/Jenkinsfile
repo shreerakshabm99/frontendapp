@@ -30,7 +30,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('login-app') {
-                    bat 'npm test -- --coverage --watchAll=false --passWithNoTests'
+                    bat 'npm test'
                 }
             }
         }
