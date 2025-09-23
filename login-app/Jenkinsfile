@@ -27,16 +27,14 @@ pipeline {
             }
         }
 
-      stage('Test') {
-    steps {
-        dir('login-app') {
-            bat 'dir /s *.test.js' // lists all test files found
-            withEnv(['CI=true']) {
-                bat 'npm test'
-            }
-        }
+  stage('Test') {
+  steps {
+    dir('login-app') {
+      bat 'npm test '
     }
+  }
 }
+
 
 
         stage('SonarQube Analysis') {
