@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('Running') {
+        stage('Build') {
             steps {
                 dir('login-app') {
                     bat 'npm run build'
@@ -24,25 +24,28 @@ pipeline {
             }
         }
 
-        // stage('Build') {
-        //     steps {
-        //         dir('login-app') {
-        //             bat 'npm start'
-        //         }
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                dir('login-app') {
+                    bat 'npm test -- --coverage --watchAll=false'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                dir('login-app') {
+                    withSonarQubeEnv('MySonar') {
+                        bat 'sonar-scanner'
+                    }
+                }
+            }
+        }
 
         stage('Archive Build') {
             steps {
                 dir('login-app') {
                     archiveArtifacts artifacts: 'build/**', fingerprint: true
-                }
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('MySonar') {
-                    bat 'sonar-scanner'
                 }
             }
         }
