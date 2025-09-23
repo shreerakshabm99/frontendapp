@@ -14,7 +14,7 @@ pipeline {
                     // Install project dependencies including sonar-scanner
                     bat 'npm install'
                     // Also install sonar-scanner locally (if not already in package.json)
-                    bat 'npm install sonar-scanner --save-dev'
+                    bat 'npm install --save-dev sonar-scanner'
                 }
             }
         }
